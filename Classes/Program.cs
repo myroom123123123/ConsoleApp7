@@ -4,37 +4,28 @@
     {
         static void Main(string[] args)
         {
-            try
-            {
-                var passport1 = new ForeignPassport(
-                    "AB123456",
-                    "Іванов Іван Іванович",
-                    new DateTime(2018, 5, 15),
-                    new DateTime(2028, 5, 14),
-                    "ДМСУ м. Києва");
+            Console.WriteLine("Логічний калькулятор");
+            Console.WriteLine("Введіть вираз (наприклад, 3>2 або 7<=3)");
+            Console.WriteLine("Доступні оператори: <, >, <=, >=, ==, !=");
+            Console.WriteLine("Для виходу введіть 'exit'");
 
-                Console.WriteLine("Успішно створений паспорт:");
-                Console.WriteLine(passport1);
-                Console.WriteLine();
+            while (true)
+            {
+                Console.Write("\nВведіть вираз: ");
+                string input = Console.ReadLine()?.Trim();
+
+                if (input?.ToLower() == "exit")
+                    break;
 
                 try
                 {
-                    var passport2 = new ForeignPassport(
-                        "123", 
-                        "Ів", 
-                        new DateTime(2030, 1, 1), 
-                        new DateTime(2020, 1, 1), 
-                        ""); 
+                    bool result = LogicalExpressionCalculator.Evaluate(input);
+                    Console.WriteLine($"Результат: {result}");
                 }
-                catch (ArgumentException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Помилка при створенні паспорта:");
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine($"Помилка: {ex.Message}");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Сталася неочікувана помилка: {ex.Message}");
             }
         }
     }
