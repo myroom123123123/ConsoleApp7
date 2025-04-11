@@ -25,7 +25,7 @@ namespace ConsoleApp7.Classes
         {
             Console.Clear();
             Console.WriteLine($"╔══════════════════════════════════════╗");
-            Console.WriteLine($"║ {from} → {to}".PadRight(36) + "║");
+            Console.WriteLine($"║ {from} → {to}".PadRight(36) + "   ║");
             Console.WriteLine($"╚══════════════════════════════════════╝");
         }
     }
